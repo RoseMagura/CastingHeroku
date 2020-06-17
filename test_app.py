@@ -98,13 +98,13 @@ class CastingTestCase(unittest.TestCase):
         self.assertEqual(data['message'], 'resource not found')
 
     def test_delete_movie(self):
-        res = self.client().delete('/movies/8', headers=exec_header)
+        res = self.client().delete('/movies/12', headers=exec_header)
         data = json.loads(res.data)
-        movie = Movie.query.filter(Movie.id == 8).one_or_none()
+        movie = Movie.query.filter(Movie.id == 12).one_or_none()
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(data['deleted'], 8)
+        self.assertEqual(data['deleted'], 12)
         self.assertTrue(data['total_movies'])
         self.assertEqual(movie, None)
 
@@ -231,13 +231,13 @@ class CastingTestCase(unittest.TestCase):
         self.assertEqual(data['description'], 'Permission not found.')
 
     def test_delete_actor(self):
-        res = self.client().delete('/actors/5', headers=exec_header)
+        res = self.client().delete('/actors/8', headers=exec_header)
         data = json.loads(res.data)
-        actor = Actor.query.filter(Actor.id == 5).one_or_none()
+        actor = Actor.query.filter(Actor.id == 8).one_or_none()
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(data['deleted'], 5)
+        self.assertEqual(data['deleted'], 8)
         self.assertTrue(data['total_actors'])
         self.assertEqual(actor, None)
 
