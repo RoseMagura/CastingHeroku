@@ -41,6 +41,7 @@ def create_app(test_config=None):
     @app.route('/')
     def health():
         return jsonify("healthy")
+        
     @app.route('/movies')
     @requires_auth('get:movies')
     def get_movies(token):
