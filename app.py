@@ -24,11 +24,10 @@ def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
     app.config.from_object('config.TestConfig')
-    # database_name = 'casting'
-    # database_path = 'postgresql://{}:{}@{}/{}'.format(
-    #                     'postgres', 1, 'localhost:5432', database_name)
-    setup_db(app, database_path='postgres://rnepqcnlixmwvi:2519bee575c528c54829da9d1a171580b5ead791b3fd4b7e7507608c3e8c7354@ec2-52-72-65-76.compute-1.amazonaws.com:5432/dc4mc4boljurn4')
-
+    database_name = 'casting'
+    database_path = 'postgresql://{}:{}@{}/{}'.format(
+                        'postgres', 1, 'localhost:5432', database_name)
+    setup_db(app, database_path=database_path)
     @app.after_request
     def after_request(response):
         response.headers.add('Access-Control-Allow-Headers',
