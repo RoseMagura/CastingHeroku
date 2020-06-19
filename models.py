@@ -6,7 +6,8 @@ from flask import Flask
 from flask_migrate import Migrate
 import json
 
-database_path = os.getenv('DATABASE_URL')
+database_path = 'postgres://rnepqcnlixmwvi:2519bee575c528c54829da9d1a171580b5ead791b3fd4b7e7507608c3e8c7354@ec2-52-72-65-76.compute-1.amazonaws.com:5432/dc4mc4boljurn4'
+
 # database_name = 'casting'
 # database_path = 'postgresql://{}:{}@{}/{}'.format(
 #                         'postgres', 1, 'localhost:5432', database_name)
@@ -117,3 +118,6 @@ class Actor(db.Model):
             'gender': self.gender,
             'movies': [m.name for m in self.movies]
         }
+
+if __name__ == '__main__':
+    print(database_path)
