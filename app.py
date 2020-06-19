@@ -23,7 +23,7 @@ def paginate_items(request, selection, type):
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
-    app.config.from_object('config.TestConfig')
+    # app.config.from_object('config.TestConfig')
     # database_name = 'casting'
     database_path = os.getenv('DATABASE_URL')
     setup_db(app, database_path=database_path)
