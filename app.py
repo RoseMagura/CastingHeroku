@@ -38,10 +38,10 @@ def create_app(test_config=None):
         response.headers.add('Access-Control-Allow-Credentials', 'true')
         return response
 
-    @app.route('/')
+    @app.route('/', methods=['POST', 'GET'])
     def health():
         return jsonify("healthy")
-        
+
     @app.route('/movies')
     @requires_auth('get:movies')
     def get_movies(token):
