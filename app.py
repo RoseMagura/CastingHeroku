@@ -27,7 +27,7 @@ def create_app(test_config=None):
     database_name = 'casting'
     database_path = 'postgresql://{}:{}@{}/{}'.format(
                         'postgres', 1, 'localhost:5432', database_name)
-    setup_db(app, database_path=database_path)
+    setup_db(app, database_path=DATABASE_URL)
     @app.after_request
     def after_request(response):
         response.headers.add('Access-Control-Allow-Headers',
