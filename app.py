@@ -3,7 +3,7 @@ from flask import Flask, request, abort, jsonify, redirect, url_for, \
     render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from models import *
+from models import Actor, Movie, setup_db, cast
 from auth import *
 
 ITEMS_PER_PAGE = 10
@@ -23,11 +23,12 @@ def paginate_items(request, selection, type):
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
+    setup_db(app)
     # app.config.from_object('config.TestConfig')
     # database_name = 'casting'
-    database_path = 'postgres://rnepqcnlixmwvi:2519bee575c528c54829da9d1a171580b5ead791b3fd4b7e7507608c3e8c7354@ec2-52-72-65-76.compute-1.amazonaws.com:5432/dc4mc4boljurn4'
+    # database_path = 'postgres://rnepqcnlixmwvi:2519bee575c528c54829da9d1a171580b5ead791b3fd4b7e7507608c3e8c7354@ec2-52-72-65-76.compute-1.amazonaws.com:5432/dc4mc4boljurn4'
 
-    setup_db(app, database_path=database_path)
+    # setup_db(app, database_path='postgres://rnepqcnlixmwvi:2519bee575c528c54829da9d1a171580b5ead791b3fd4b7e7507608c3e8c7354@ec2-52-72-65-76.compute-1.amazonaws.com:5432/dc4mc4boljurn4')
     @app.after_request
     def after_request(response):
         response.headers.add('Access-Control-Allow-Headers',
@@ -305,7 +306,7 @@ def create_app(test_config=None):
     return app
 
 
-APP = create_app()
+app = create_app()
 
 if __name__ == '__main__':
     APP.run(host='0.0.0.0', port=8080, debug=True)
