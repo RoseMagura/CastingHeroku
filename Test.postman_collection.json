@@ -1,0 +1,681 @@
+{
+	"info": {
+		"_postman_id": "a4d816be-8ed3-46d1-8673-1f2125c0c3c7",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Capstone",
+			"item": [
+				{
+					"name": "Assistant Patch Actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb87414f-b5b9-48da-9726-4e3029f0a2dc",
+								"exec": [
+									"pm.test(\"Status code is 403\", function(){\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AssistantToken\n}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"K. Nanjiani\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/actors/4",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Director Post Actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2309a9df-acc4-4ef8-969b-6219b3537b6f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{DirectorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"B\",\n\t\"age\": 96,\n\t\"gender\": \"male\", \n\t\"movies\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exec Delete Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b5f6984c-daa5-4254-8d64-80dc0f21a768",
+								"exec": [
+									"pm.test(\"Status code is 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ExecToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/movies/12",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Director Post Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2309a9df-acc4-4ef8-969b-6219b3537b6f",
+								"exec": [
+									"pm.test(\"Status code is 403\", function(){\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{DirectorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Z\",\n\t\"release_date\": 1996,\n\t\"actors\": [\"Leonardo DiCaprio\", \"Claire Danes\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Director Get Actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fc4dce88-cd10-49c2-b829-d1a61fc90256",
+								"exec": [
+									"pm.test(\"Status code is 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{DirectorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exec Get Actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da99e409-0b39-4893-a47a-97aea0ebbe5b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ExecToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/actors",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Director Get Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fc4dce88-cd10-49c2-b829-d1a61fc90256",
+								"exec": [
+									"pm.test(\"Status code is 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{DirectorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Exec Get Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da99e409-0b39-4893-a47a-97aea0ebbe5b",
+								"exec": [
+									"pm.test(\"Status code is 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ExecToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assistant Get Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "73a7af89-bd1f-44a6-9d90-16e847970d89",
+								"exec": [
+									"pm.test(\"Status code is 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"value contains movies array\", function () {\r",
+									"var jsonData = pm.response.json();\r",
+									"pm.expect(jsonData.movies).to.be.an('array');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AssistantToken\n}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Kate Winslet\",\n\t\"age\": 45,\n\t\"gender\": \"female\",\n\t\"movies\": \"Titanic\"\n}"
+						},
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Director Delete Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b5f6984c-daa5-4254-8d64-80dc0f21a768",
+								"exec": [
+									"pm.test(\"Status code is 403\", function(){\r",
+									"    pm.response.to.have.status(403);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{DirectorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/actors/12",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Director Patch Actors",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb87414f-b5b9-48da-9726-4e3029f0a2dc",
+								"exec": [
+									"pm.test(\"Status code is 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{DirectorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"age\": 42,\n      \"gender\": \"male\",\n      \"id\": 4,\n      \"movies\": [\n        \"The Lovebirds\"\n      ],\n      \"name\": \"K. Nanjiani\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/actors/4",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"actors",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Director Patch Movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb87414f-b5b9-48da-9726-4e3029f0a2dc",
+								"exec": [
+									"pm.test(\"Status code is 200\", function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{DirectorToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n\t\"name\": \"Pan's Labyrinth\",\n    \"release_date\": 2006,\n\t\"actors\": [\n        \"Sergi López\",\n        \"Maribel Verdú\",\n        \"Ivana Baquero\"\n      ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://casting-api-for-fsnd.herokuapp.com/movies/28",
+							"protocol": "https",
+							"host": [
+								"casting-api-for-fsnd",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"28"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Assistant Get Actors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "73a7af89-bd1f-44a6-9d90-16e847970d89",
+						"exec": [
+							"pm.test(\"Status code is 200\", function(){\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"value contains actors array\", function () {\r",
+							"var jsonData = pm.response.json();\r",
+							"pm.expect(jsonData.actors).to.be.an('array');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AssistantToken\n}}\n",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://casting-api-for-fsnd.herokuapp.com/actors",
+					"protocol": "https",
+					"host": [
+						"casting-api-for-fsnd",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"actors"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
