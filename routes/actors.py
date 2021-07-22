@@ -1,10 +1,10 @@
 from flask import Blueprint
-from auth import * 
+from CastingHeroku.auth import * 
 from flask import request, abort, jsonify
 # from database.models.actor import Actor
 # from database.models.movie import Movie
 # from database.main import db
-from utilities import paginate_items
+from CastingHeroku.utilities import paginate_items
 
 bp = Blueprint("actors", __name__)
 

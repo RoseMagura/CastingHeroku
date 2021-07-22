@@ -2,26 +2,26 @@ import os
 from flask import Blueprint, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-# from models import Actor, Movie, setup_db, cast
-from auth import *
+from CastingHeroku.database.models import Movie
+from CastingHeroku.auth import *
+from CastingHeroku.utilities import paginate_items
 
 bp = Blueprint('movies', __name__)
 
 @bp.route('/movies')
 # @requires_auth('get:movies')
 def get_movies(token=''):
-    # selection = Movie.query.order_by(Movie.id).all()
-    # current_movies = paginate_items(request, selection, Movie)
+    selection = Movie.query.order_by(Movie.id).all()
+    current_movies = paginate_items(request, selection)
 
-    # if (len(current_movies) == 0):
-    #     abort(404)
+    if (len(current_movies) == 0):
+        abort(404)
 
-    # return jsonify({
-    #     'success': True,
-    #     'movies': current_movies,
-    #     'total_movies': len(selection),
-    # })
-    return 'movies'
+    return jsonify({
+        'success': True,
+        'movies': current_movies,
+        'total_movies': len(selection),
+    })
 
 # @app.route('/movies', methods=['POST'])
 # @requires_auth('post:movies')
