@@ -10,7 +10,7 @@ bp = Blueprint("actors", __name__)
 
 @bp.route('/actors', methods=['GET'])
 # @requires_auth('get:actors')
-def get_actors():
+def get_actors(token=''):
     # selection = Actor.query.order_by(Actor.id).all()
     # current_actors = paginate_items(request, selection, Actor)
 

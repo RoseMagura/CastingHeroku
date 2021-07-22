@@ -1,24 +1,27 @@
 import os
-from flask import Flask, request, abort, jsonify
+from flask import Blueprint, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-from models import Actor, Movie, setup_db, cast
+# from models import Actor, Movie, setup_db, cast
 from auth import *
 
-# @app.route('/movies')
-#     @requires_auth('get:movies')
-#     def get_movies(token):
-#         selection = Movie.query.order_by(Movie.id).all()
-#         current_movies = paginate_items(request, selection, Movie)
+bp = Blueprint('movies', __name__)
 
-#         if (len(current_movies) == 0):
-#             abort(404)
+@bp.route('/movies')
+# @requires_auth('get:movies')
+def get_movies(token=''):
+    # selection = Movie.query.order_by(Movie.id).all()
+    # current_movies = paginate_items(request, selection, Movie)
 
-#         return jsonify({
-#             'success': True,
-#             'movies': current_movies,
-#             'total_movies': len(selection),
-#         })
+    # if (len(current_movies) == 0):
+    #     abort(404)
+
+    # return jsonify({
+    #     'success': True,
+    #     'movies': current_movies,
+    #     'total_movies': len(selection),
+    # })
+    return 'movies'
 
 # @app.route('/movies', methods=['POST'])
 # @requires_auth('post:movies')

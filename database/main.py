@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 
 
 load_dotenv()
@@ -17,8 +16,8 @@ setup_db(app)
 
 def setup_db(app, database_path=database_path):
     app.config.from_object('config')
-    migrate = Migrate(app, db)
     db.app = app
     db.init_app(app)
     db.create_all()
+    return db
 
